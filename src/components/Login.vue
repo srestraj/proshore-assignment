@@ -69,11 +69,6 @@ export default {
 
       const userLogin = () => {
          store.dispatch('login/userLogin', { email: email.value, password: password.value })
-         setTimeout(() => {
-            if (isAuthenticated.value) {
-               router.push({ name: 'home' })
-            }
-         }, 2500)
       }
 
       return {

@@ -45,6 +45,7 @@ const actions = {
             window.localStorage.setItem('user', JSON.stringify(res.data.user))
             commit('setAuthentication', true)
             toast.success('Logged in successfully')
+            window.location.replace("/")
         }).catch((err) => {
             console.log(err)
             commit('setErrorMessage', err.response.data)

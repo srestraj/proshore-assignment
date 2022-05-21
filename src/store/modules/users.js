@@ -76,6 +76,7 @@ const actions = {
     // add user
     async addUser({ commit, state, dispatch }, { name, email, password, address, department, manager, role, joiningDate }) {
         commit('setLoading', true)
+        const token = window.localStorage.getItem('userToken')
         await axios.post(`${state.apiURL}/users/register`, {
             name: name,
             email: email,
@@ -90,7 +91,7 @@ const actions = {
             commit('setLoading', false)
             commit('setMessage', res.data.statusText)
             toast.success('User added successfully')
-            dispatch('getUsers', accessToken)
+            dispatch('getUsers', token)
             const modal = document.querySelector('.modal')
             modal.classList.remove('show')
             modal.style.display = 'none'
