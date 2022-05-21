@@ -1,5 +1,7 @@
 # Proshore Assignment
 
+[Live Preview](https://proshore-assignment.netlify.app/)
+
 ## Build Setup
 
 ```bash
@@ -39,7 +41,7 @@ Components contain all the components used in the app.
 
 ### Technologies used:
 
-As explained in the assignment, Vue 3 with composition APi `setup`, Vue Router 4 and Vuex 3 has been used.
+As explained in the assignment, Vue 3 with composition API `setup`, Vue Router 4 and Vuex 3 has been used.
 
 Some external packages have also been used such as:
 - `axios` for making API calls

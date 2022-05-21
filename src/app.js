@@ -9,4 +9,4 @@ import 'vue-toastification/dist/index.css'
 
 store.dispatch('login/checkAuthentication')
 
-createApp(App).use(router).use(store).use(Toast, { position: 'bottom-right' }).mount('#app')
+createApp(App).use(router).use(store).use(Toast, { position: 'bottom-right', timeout: 1994 }).mount('#app')

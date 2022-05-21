@@ -104,26 +104,35 @@ const actions = {
 
     // delete user
     async deleteUser({ commit, dispatch }, payload) {
-        await axios.delete(`${state.apiURL}/users/${payload}`).then((res) => {
+        const token = window.localStorage.getItem('userToken')
+        await axios.delete(`${state.apiURL}/users/${payload}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            id: payload
+        }).then((res) => {
             // console.log(res)
             toast.success('User deleted successfully')
-            dispatch('getUsers', accessToken)
+            dispatch('getUsers', token)
         }).catch((err) => {
-            console.log(err)
+            console.log(err.response.data)
+            toast.error(err.response.data)
         })
     },
 
     // get single user
     async getUserDetails({ commit, state }, payload) {
+        const token = window.localStorage.getItem('userToken')
         await axios.get(`${state.apiURL}/users/${payload}`, {
             headers: {
-                Authorization: `Bearer ${accessToken}`
+                Authorization: `Bearer ${token}`
             }
         }).then((res) => {
             // console.log(res)
             commit('storeSingleUserData', res.data)
         }).catch((err) => {
             console.log(err)
+            toast.error(err.response.data)
         })
     },
 
@@ -146,6 +155,7 @@ const actions = {
         }).catch((err) => {
             console.log(err)
             commit('setLoading', false)
+            toast.error(err.response.data)
         })
     },
 }
