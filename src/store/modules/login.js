@@ -66,6 +66,23 @@ const actions = {
             commit('setAccessToken', null)
             commit('setAuthentication', false)
         }
+    },
+
+    // logout
+
+    logout({ commit }) {
+        const token = window.localStorage.getItem('userToken')
+        const user = window.localStorage.getItem('user')
+        if (token) {
+            commit('setAccessToken', null)
+            commit('setAuthentication', false)
+            commit('setUser', null)
+            window.localStorage.removeItem('userToken')
+            window.localStorage.removeItem('user')
+            window.location.replace("/")
+        } else {
+            return
+        }
     }
 }
 
